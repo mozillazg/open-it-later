@@ -5,8 +5,9 @@ from django.views.generic import TemplateView
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    url(r'^$', TemplateView.as_view(template_name='base.html')),
+urlpatterns = patterns(
+    '',
+    # url(r'^$', TemplateView.as_view(template_name='base.html')),
 
     # Examples:
     # url(r'^$', 'openitlater.views.home', name='home'),

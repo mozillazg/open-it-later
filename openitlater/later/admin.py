@@ -3,13 +3,13 @@
 
 from django.contrib import admin
 
-from .models import TOpen
+from .models import URL
 
 
-class TOpenAdmin(admin.ModelAdmin):
-    list_display = ('author', 'title', 'created_at',
-                    'last_opened_at', 'is_invalid')
+class URLAdmin(admin.ModelAdmin):
+    list_display = ('author', 'title', 'date_created',
+                    'last_opened', 'is_valid')
     search_fields = ('title', 'description', 'note')
-    list_filter = ('created_at', 'last_opened_at', 'is_invalid')
+    list_filter = ('date_created', 'last_opened', 'is_valid')
 
-admin.site.register(TOpen, TOpenAdmin)
+admin.site.register(URL, URLAdmin)
