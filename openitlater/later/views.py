@@ -10,6 +10,7 @@ from django.core.urlresolvers import reverse_lazy
 from .models import URL
 from .utils import object_does_not_exist
 from .utils import get_url_info
+from .forms import URLForm
 
 
 @login_required
@@ -28,7 +29,7 @@ def index(request, template_name="", extra_context=None):
 @login_required
 def add_url(request, template_name="", extra_context=None):
     if request.method == 'POST':
-        form = None
+        form = URLForm(request.POST)
         if form.is_valid():
             url = form.cleaned_data['url']
             url_info = get_url_info(url)
@@ -41,7 +42,7 @@ def add_url(request, template_name="", extra_context=None):
                                note=note)
             return HttpResponseRedirect(reverse_lazy('index'))
     else:
-        form = None
+        form = URLForm()
 
     context = {
         'form': form,
